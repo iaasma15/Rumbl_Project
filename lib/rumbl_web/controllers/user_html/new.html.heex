@@ -1,0 +1,6 @@
+<h3>Create a new user</h3> 
+<p><%= error_message(@changeset) %></p>
+<%= form_for @changeset, "/users", fn f -> %>
+  Name: <%= text_input(f, :name) %> Username: <%= text_input(f, :username) %>
+  <%= submit("Create") %>
+<% end %>

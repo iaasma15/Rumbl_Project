@@ -1,0 +1,9 @@
+<a href="/users/new">Create User</a>
+<table>
+  <%= for user <- @users do %>
+    <tr>
+      <td><b><%= first_name(user) %></b> (<%= user.id %>)</td>
+      <td><%= link_to_user(user) %></td>
+    </tr>
+  <% end %>
+</table>
