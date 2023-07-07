@@ -13,12 +13,7 @@ defmodule Rumbl.Users do
   end
 
   def get_user(id) do
-    # Enum.find(list_users(), fn user -> user.id == id end)
-    Repo.get!(User, id)
-  end
-
-  def get_user!(id) do
-    Repo.get!(User, id)
+    Repo.get(User, id)
   end
 
   def get_user_by(params) do
@@ -38,5 +33,15 @@ defmodule Rumbl.Users do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def update_user(user, attrs) do
+    user
+    |> User.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_user(user) do
+    Repo.delete(user)
   end
 end

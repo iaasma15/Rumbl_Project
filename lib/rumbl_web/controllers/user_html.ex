@@ -17,6 +17,15 @@ defmodule RumblWeb.UserHTML do
     Link.link("Show", to: "/users/#{id}")
   end
 
+  def edit_user_link(%User{id: id}) do
+    # path = RumblWeb.Router.Helpers.user_path(conn, :create)
+    Link.link("Edit", to: "/users/#{id}/edit")
+  end
+
+  def delete_user_link(user) do
+    Link.link("Delete", to: "/users/#{user.id}", method: :delete)
+  end
+
   def error_message(changeset) do
     changeset.errors
     |> Enum.map(fn {attr, {msg, _}} ->

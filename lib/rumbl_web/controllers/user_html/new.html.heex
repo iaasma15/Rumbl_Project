@@ -1,6 +1,12 @@
-<h3>Create a new user</h3> 
-<p><%= error_message(@changeset) %></p>
-<%= form_for @changeset, "/users", fn f -> %>
-  Name: <%= text_input(f, :name) %> Username: <%= text_input(f, :username) %>
-  <%= submit("Create") %>
+<h1 class="text-3xl font-raleway text-black-400">Create a new user</h1>
+<p class="text-sm text-red-900"><%= error_message(@changeset) %></p>
+<%= form_for @changeset, "/users",[class: "bg-white"] , fn f -> %>
+  <label class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+  <%= text_input(f, :name, class: "text-input") %>
+  <label class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+  <%= text_input(f, :username, class: "text-input") %>
+  <%= submit("Create",
+    class:
+      "block mt-3 leading-3 p-4 bg-teal-500 hover:bg-teal-600 focus:outline-none focus:shadow-outline"
+  ) %>
 <% end %>

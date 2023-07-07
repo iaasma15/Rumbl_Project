@@ -1,3 +1,19 @@
-<h1>Showing User</h1>
-<b><%= first_name(@user) %></b>
-(<%= @user.id %>)
+<h1 class="text-3xl font-raleway text-black-400">User Info</h1>
+<table>
+  <tr>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Name</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Username</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">ID</th>
+  </tr>
+  <tr>
+    <td class="border border-gray-400 px-4 py-2"><%= first_name(@user) %></td>
+    <td class="border border-gray-400 px-4 py-2"><%= @user.username %></td>
+    <td class="border border-gray-400 px-4 py-2">(<%= @user.id %>)</td>
+    <a
+      class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline"
+      href="/users"
+    >
+      Back
+    </a>
+  </tr>
+</table>

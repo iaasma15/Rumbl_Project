@@ -9,9 +9,9 @@ defmodule Rumbl.User do
     timestamps()
   end
 
-  def changeset(user, attr) do
+  def changeset(user, attrs) do
     user
-    |> cast(attr, [:name, :username])
+    |> cast(attrs, [:name, :username])
     |> validate_required([:name, :username])
     |> validate_length(:username, min: 3, max: 20)
   end
