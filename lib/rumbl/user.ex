@@ -5,13 +5,14 @@ defmodule Rumbl.User do
   schema "users" do
     field :name, :string
     field :username, :string
+    field :address, :string
 
     timestamps()
   end
 
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :username])
+    |> cast(attrs, [:name, :username, :address])
     |> validate_required([:name, :username])
     |> validate_length(:username, min: 3, max: 20)
   end

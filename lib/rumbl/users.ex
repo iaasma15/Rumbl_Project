@@ -1,6 +1,7 @@
 defmodule Rumbl.Users do
   alias Rumbl.Repo
   alias Rumbl.User
+  import Ecto.Query
   # alias allows you to set up aliases for any given module name
   # CRUDL actions - create, read, update, delete, list
   # def all
@@ -8,14 +9,23 @@ defmodule Rumbl.Users do
   # def create
   # def update
 
-  def list_users do
-    Repo.all(User)
+  # params = %{"search" => "An"}
+  def list_users(params \\ %{}) do
+    query = if params["search"] do # key is search #params is a map
+      term = "%#{params["search"]}%"
+      from(u in User,
+      where: ilike(u.name, ^term) or ilike(u.username, ^term) or ilike(u.address, ^term)
+    )
+    else 
+      from u in User, order_by: [asc: u.id]
+    end
+    Repo.all(query)
   end
 
   def get_user(id) do
     Repo.get(User, id)
   end
-
+  
   def get_user_by(params) do
     # Enum.find(list_users(), fn user ->
     #   Enum.all?(params, fn {key, value} -> Map.get(user, key) == value end)

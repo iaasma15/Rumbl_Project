@@ -8,6 +8,18 @@ defmodule Rumbl.UsersTest do
     assert user.username == "test"
   end
 
+  test "list_users/1 without search" do
+    {:ok, _user1} = Users.create_user(%{name: "Test", username: "test"})
+    {:ok, _user2} = Users.create_user(%{name: "Anton", username: "anton"})
+    assert length(Users.list_users()) == 2
+  end
+
+  test "list_users/1 with search term" do
+    {:ok, _user1} = Users.create_user(%{name: "Test", username: "test"})
+    {:ok, _user2} = Users.create_user(%{name: "Anton", username: "anton"})
+    assert length(Users.list_users(%{"search" => "an"})) == 1
+  end
+
   test "update_user" do
     {:ok, user} = Users.create_user(%{name: "Test", username: "test"})
 

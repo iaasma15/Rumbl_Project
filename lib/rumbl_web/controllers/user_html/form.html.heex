@@ -1,0 +1,12 @@
+<%= form_for @changeset, @action, [class: "bg-white"] , fn f -> %>
+  <label class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+  <%= text_input(f, :name, class: "text-input") %>
+  <label class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+  <%= text_input(f, :username, class: "text-input") %>
+  <label class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
+  <%= text_input(f, :address, class: "text-input") %>
+  <%= submit(""Create"",
+    class:
+      "block mt-3 leading-3 p-4 bg-teal-500 hover:bg-teal-600 focus:outline-none focus:shadow-outline"
+  ) %>
+<% end %>

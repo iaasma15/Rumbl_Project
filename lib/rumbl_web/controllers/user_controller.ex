@@ -3,8 +3,8 @@ defmodule RumblWeb.UserController do
   alias Rumbl.Users
   alias Rumbl.User
 
-  def index(conn, _params) do
-    users = Users.list_users()
+  def index(conn, params) do
+    users = Users.list_users(params)
     render(conn, "index.html", users: users)
   end
 

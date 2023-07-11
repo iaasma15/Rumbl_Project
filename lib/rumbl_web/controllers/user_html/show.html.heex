@@ -4,11 +4,13 @@
     <th class="border border-gray-400 px-4 py-2 text-gray-800">Name</th>
     <th class="border border-gray-400 px-4 py-2 text-gray-800">Username</th>
     <th class="border border-gray-400 px-4 py-2 text-gray-800">ID</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Address</th>
   </tr>
   <tr>
     <td class="border border-gray-400 px-4 py-2"><%= first_name(@user) %></td>
     <td class="border border-gray-400 px-4 py-2"><%= @user.username %></td>
-    <td class="border border-gray-400 px-4 py-2">(<%= @user.id %>)</td>
+    <td class="border border-gray-400 px-4 py-2"><%= @user.id %></td>
+     <td class="border border-gray-400 px-4 py-2"><%= @user.address %></td>
     <a
       class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline"
       href="/users"

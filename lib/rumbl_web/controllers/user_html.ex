@@ -11,6 +11,7 @@ defmodule RumblWeb.UserHTML do
     |> String.split(" ")
     |> Enum.at(0)
   end
+  
 
   def link_to_user(%User{id: id}) do
     # path = RumblWeb.Router.Helpers.user_path(conn, :create)
