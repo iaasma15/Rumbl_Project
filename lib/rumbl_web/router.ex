@@ -21,8 +21,10 @@ defmodule RumblWeb.Router do
     get "/asma", PageController, :asma
     get "/", PageController, :index
 
+
     # , only: [:index, :show, :new, :create]
     resources "/users", UserController
+    resources "/products", ProductController
   end
 
   # Other scopes may use custom stacks.

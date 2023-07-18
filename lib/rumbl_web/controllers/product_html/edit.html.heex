@@ -1,0 +1,5 @@
+<h1 class="text-3xl font-raleway text-black-400">Edit Product</h1>
+
+<p class="text-sm text-red-900"><%= error_message(@changeset) %></p>
+<%= Phoenix.Template.render RumblWeb.ProductHTML, "form", "html", changeset: @changeset, action:  "/products/#{@product.id}", submit: "Update" %>
+

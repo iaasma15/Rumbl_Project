@@ -6,4 +6,4 @@
 - CSS, HTML - your ideas
 - pass button name as a variable (like changeset, action)
 
-- CRUD for product: name, type, other, UOM
+- CRUD for product improve tables/text

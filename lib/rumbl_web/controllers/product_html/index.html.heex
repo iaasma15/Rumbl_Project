@@ -1,0 +1,36 @@
+<h1 class="text-3xl font-raleway text-black-400">Product List</h1>
+<form action="/products/" method="get">
+  <label for="search">Search:</label><br />
+  <input type="text" id="search" name="search" value="" /><br />
+</form>
+<table class="border-collapse border-2 border-gray-500 mt-1">
+  <tr>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Name</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">ID</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Type</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Quantity</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Color</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Show</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Edit</th>
+    <th class="border border-gray-400 px-4 py-2 text-gray-800">Delete</th>
+  </tr>
+  <%= for product <- @products do %>
+
+    <tr>
+      <td class="border border-gray-400 px-4 py-2"><%= product.name %></td>
+      <td class="border border-gray-400 px-4 py-2"><%= product.id %></td>
+       <td class="border border-gray-400 px-4 py-2"><%= product.type %></td>
+       <td class="border border-gray-400 px-4 py-2"><%= product.quantity %></td>
+       <td class="border border-gray-400 px-4 py-2"><%= product.color %></td>
+      <td class="border border-gray-400 px-4 py-2"><b><%= link_to_product(product) %></b></td>
+      <td class="border border-gray-400 px-4 py-2"><b><%= edit_product_link(product) %></b></td>
+      <td class="border border-gray-400 px-4 py-2"><b><%= delete_product_link(product) %></b></td>
+    </tr>
+  <% end %>
+</table>
+<a
+  class="block mt-3 w-40 leading-3 p-4 bg-teal-500 hover:bg-teal-600 focus:outline-none focus:shadow-outline"
+  href="/products/new"
+>
+  Create a new User
+</a>
