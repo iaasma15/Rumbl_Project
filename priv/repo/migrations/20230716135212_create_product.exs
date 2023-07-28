@@ -7,10 +7,9 @@ defmodule Rumbl.Repo.Migrations.CreateProduct do
       add :type, :string
       add :quantity, :int
       add :unit, :string
-      add :color,  :string
+      add :color, :string
 
       timestamps()
     end
-
   end
 end

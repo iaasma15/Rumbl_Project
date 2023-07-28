@@ -1,9 +1,9 @@
-defmodule Rumbl.Repo.Migrations.AddFieldToYourTable do
+defmodule Rumbl.Repo.Migrations.AddPasswordToUsers do
   use Ecto.Migration
 
   def change do
     alter table(:users) do
-      add :address, :string
+      add :password, :string
     end
   end
 end

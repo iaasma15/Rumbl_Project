@@ -11,21 +11,25 @@ defmodule Rumbl.Users do
 
   # params = %{"search" => "An"}
   def list_users(params \\ %{}) do
-    query = if params["search"] do # key is search #params is a map
-      term = "%#{params["search"]}%"
-      from(u in User,
-      where: ilike(u.name, ^term) or ilike(u.username, ^term) or ilike(u.address, ^term)
-    )
-    else 
-      from u in User, order_by: [asc: u.id]
-    end
+    # key is search #params is a map
+    query =
+      if params["search"] do
+        term = "%#{params["search"]}%"
+
+        from(u in User,
+          where: ilike(u.name, ^term) or ilike(u.username, ^term) or ilike(u.address, ^term)
+        )
+      else
+        from u in User, order_by: [asc: u.id]
+      end
+
     Repo.all(query)
   end
 
   def get_user(id) do
     Repo.get(User, id)
   end
-  
+
   def get_user_by(params) do
     # Enum.find(list_users(), fn user ->
     #   Enum.all?(params, fn {key, value} -> Map.get(user, key) == value end)
@@ -42,6 +46,12 @@ defmodule Rumbl.Users do
     # %User{}
     %User{}
     |> User.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def register(attrs) do
+    %User{}
+    |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
 
