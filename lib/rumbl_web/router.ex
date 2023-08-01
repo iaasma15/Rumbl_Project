@@ -22,6 +22,8 @@ defmodule RumblWeb.Router do
     get "/", PageController, :index
     get "/register", RegistrationController, :form
     post "/register", RegistrationController, :register
+    get "/login", AuthController, :form
+    post "/login", AuthController, :login
 
     # , only: [:index, :show, :new, :create]
     resources "/users", UserController

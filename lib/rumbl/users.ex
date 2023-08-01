@@ -55,6 +55,24 @@ defmodule Rumbl.Users do
     |> Repo.insert()
   end
 
+  def login(attrs) do
+    case Repo.get_by(User, username: attrs["username"]) do
+      %User{} = user ->
+        if password_match?(user, attrs["password"]) do
+          {:ok, user}
+        else
+          {:error, :username_and_password_does_not_match}
+        end
+
+      nil ->
+        {:error, :user_not_found}
+    end
+  end
+
+  def password_match?(user, password) do
+    password == user.password
+  end
+
   def update_user(user, attrs) do
     user
     |> User.changeset(attrs)
