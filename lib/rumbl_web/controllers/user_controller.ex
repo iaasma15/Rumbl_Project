@@ -3,6 +3,8 @@ defmodule RumblWeb.UserController do
   alias Rumbl.Users
   alias Rumbl.User
 
+  plug :authenticate
+
   def index(conn, params) do
     users = Users.list_users(params)
     render(conn, "index.html", users: users)
@@ -74,6 +76,20 @@ defmodule RumblWeb.UserController do
         conn
         |> put_flash(:error, "User not found.")
         |> redirect(to: RumblWeb.Router.Helpers.user_path(conn, :index))
+    end
+  end
+
+  defp authenticate(conn, _opts) do
+    case get_session(conn, :current_user) do
+      %User{} ->
+        conn
+
+      nil ->
+        conn
+        |> put_session(:request_path, conn.request_path)
+        |> put_flash(:error, "Please log in")
+        |> redirect(to: "/login")
+        |> halt()
     end
   end
 end
