@@ -2,18 +2,26 @@
 
 ## TODO
 
-- move the form to the "form.heex" template, and use this template in "new" and "edit" actions. Google the phoenix syntax for rendering templates
-- CSS, HTML - your ideas
-- pass button name as a variable (like changeset, action)
+- add login/logout links to the header:
+  - it should be dynamic: if user is not logged in - show "login", if user is logged in - show "logout"
+ 
+- add register link to login page:
+  - somewhere near the form
 
-- CRUD for product improve tables/text
+- implement logout:
+  - link to logout (method DELETE)
+  - add route for logout (delete)
+  - "delete" action in AuthController
+  - put_session(:current_user, nil)
 
-- Improve registration changeset:
-
-  - password and confirm should be the same (use custom ecto validation, RTM)
-  - check passwor complexity (optional) (use custom ecto validation, RTM)
-
-- Implemet AutheticationController:
-  - login form
-  - authenticate, just redirect to "/" with messages "Success!" or error "either username or password is incorrect"
-  - (optional) read about sessions and cookies in Phoenix
+- password hashing:
+  - delete password column from users
+  - add password_hash column to users
+  - use BCrypt for making hash from password and for checking the password
+```sh
+    iex(2)> hash = Bcrypt.hash_pwd_salt("test1234")
+    "$2b$12$qmK0pMEtUQquXiBi66R26OW8WB5dtrvWc3jOB5Efl9prKjQCdC2n."
+    iex(3)> Bcrypt.verify_pass("qwert", hash)
+    false
+    iex(4)> Bcrypt.verify_pass("test1234", hash)
+```
